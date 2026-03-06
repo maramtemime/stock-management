@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Stock Entry & Exit Management</h2>
+        <!-- ADD PRODUCT -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+            Add New Product
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <input type="text" id="productName" class="form-control" placeholder="Product Name">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" id="productQty" class="form-control" placeholder="Initial Quantity">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" id="productPrice" class="form-control" placeholder="Unit Price">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success w-100" onclick="addProduct()">Add</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- STOCK ENTRY / EXIT -->
+        <div class="card mb-4">
+
+            <div class="card-header bg-dark text-white">
+                Stock Movement
+            </div>
+
+            <div class="card-body">
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+                        <select id="productSelect" class="form-select"></select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="number" id="movementQty" class="form-control" placeholder="Quantity">
+                    </div>
+
+                    <div class="col-md-2">
+                        <button class="btn btn-success w-100" onclick="stockIn()">Stock IN</button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button class="btn btn-danger w-100" onclick="stockOut()">Stock OUT</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        
+    </div>
+</body>
+</html>

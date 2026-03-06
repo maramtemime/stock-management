@@ -64,7 +64,7 @@
         </div>
 
         <!-- PRODUCT TABLE -->
-    <div class="card">
+        <div class="card">
 
         <div class="card-header bg-secondary text-white">
             Product List
@@ -90,9 +90,113 @@
         </div>
 
     </div>
-
     </div>
 
+    <script>
+
+        let products = []
+        let id = 1
+
+        function addProduct(){
+
+            let name = document.getElementById("productName").value
+            let qty = parseInt(document.getElementById("productQty").value)
+            let price = document.getElementById("productPrice").value
+
+            if(name === "" || isNaN(qty)){
+                alert("Please fill all fields")
+            return
+            }
+
+            let product = {
+                id:id++,
+                name:name,
+                qty:qty,
+                price:price
+            }
+
+            products.push(product)
+
+            updateTable()
+            updateSelect()
+
+            document.getElementById("productName").value=""
+            document.getElementById("productQty").value=""
+            document.getElementById("productPrice").value=""
+
+        }
+
+
+        function stockIn(){
+
+            let index = document.getElementById("productSelect").value
+            let qty = parseInt(document.getElementById("movementQty").value)
+
+            if(isNaN(qty)){ return }
+
+            products[index].qty += qty
+
+            updateTable()
+
+        }
+
+
+        function stockOut(){
+
+            let index = document.getElementById("productSelect").value
+            let qty = parseInt(document.getElementById("movementQty").value)
+
+            if(isNaN(qty)){ return }
+
+            if(products[index].qty < qty){
+                alert("Not enough stock")
+            return
+            }
+
+            products[index].qty -= qty
+
+            updateTable()
+
+        }
+
+
+        function updateTable(){
+
+            let table = document.getElementById("productTable")
+
+            table.innerHTML=""
+
+            products.forEach(p => {
+
+            table.innerHTML += `
+                <tr>
+                <td>${p.id}</td>
+                <td>${p.name}</td>
+                <td>${p.qty}</td>
+                <td>${p.price}</td>
+                </tr>
+            `
+
+            })
+
+        }
+
+
+        function updateSelect(){
+
+            let select = document.getElementById("productSelect")
+
+            select.innerHTML=""
+
+            products.forEach((p,index)=>{
+
+                select.innerHTML += `<option value="${index}">${p.name}</option>`
+
+            })
+
+        }
+
+    </script>
 
 
         
